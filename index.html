@@ -6,50 +6,38 @@
     <title>ORO Cafe</title>
     <style>
         body { margin: 0; padding: 0; font-family: sans-serif; background-color: #000; color: #fff; direction: rtl; text-align: center; }
-        .main-wrapper { max-width: 500px; margin: 0 auto; min-height: 100vh; background-color: #000; padding-bottom: 40px; }
-        .bg-container { position: relative; width: 100%; height: 100vh; background: url('welcome-bg.jpg.png') no-repeat center top; background-size: contain; }
+        .bg-container { position: relative; width: 100%; max-width: 500px; margin: 0 auto; }
         .btn { position: absolute; background: rgba(0,0,0,0); cursor: pointer; border: none; z-index: 10; }
-        .menu-btn { top: 21%; left: 5%; width: 42%; height: 21%; }
         .wedding-btn { top: 21%; right: 5%; width: 42%; height: 21%; }
         .birthday-btn { top: 44%; left: 5%; width: 90%; height: 17%; }
-        .details-panel { margin: 20px; padding: 25px; background: #1a1a1a; border: 2px solid #c5a059; border-radius: 15px; display: none; text-align: right; }
-        h2 { color: #c5a059; text-align: center; font-size: 22px; margin-bottom: 20px; }
-        p { color: #fff; font-size: 18px; line-height: 1.8; margin: 10px 0; }
-        b { color: #c5a059; }
+        .details-panel { margin: 20px auto; max-width: 450px; padding: 20px; background: #1a1a1a; border: 2px solid #c5a059; border-radius: 15px; display: none; text-align: right; }
+        h2 { color: #c5a059; text-align: center; }
     </style>
 </head>
 <body>
-<div class="main-wrapper">
     <div class="bg-container">
-        <a href="#" class="btn menu-btn"></a>
-        <button class="btn wedding-btn" onclick="showDetails('wedding')"></button>
-        <button class="btn birthday-btn" onclick="showDetails('birthday')"></button>
+        <img src="welcome-bg.jpg.png" style="width:100%">
+        <button class="btn wedding-btn" onclick="show('wedding')"></button>
+        <button class="btn birthday-btn" onclick="show('birthday')"></button>
     </div>
-    
-    <div id="detailsPanel" class="details-panel">
-        <h2 id="panelTitle"></h2>
-        <div id="panelContent"></div>
+    <div id="panel" class="details-panel">
+        <h2 id="title"></h2>
+        <div id="content"></div>
     </div>
-</div>
-
-<script>
-    const data = {
-        birthday: { 
-            title: "✨ عروض أعياد الميلاد والسبوع ✨", 
-            content: "متاح حجز (الدور الثاني) أو (الحديقة) 🔥<br><br>• <b>أقل من 5 أفراد:</b> 100 ج خدمة + طلب من المنيو.<br>• <b>من 5 إلى 10 أفراد:</b> 200 ج خدمة + طلب من المنيو.<br>• <b>من 10 إلى 20 فرد:</b> 350 ج خدمة + طلب من المنيو.<br>• <b>20 فرد فأكثر:</b> 50 ج للفرد (لا يشترط الطلب) + خصم 10% على المنيو.<br><br>✔️ السعر شامل المكان والساوند سيستم (لا يشمل الديكور).<br>✨ <b>اختياري:</b> متاح ديكور بأسعار تنافسية أو تنفيذ الديكور بنفسكم." 
-        },
-        wedding: { 
-            title: "💛 عروض الخطوبة وكتب الكتاب 💛", 
-            content: "القاعة بالدور الثاني (مكيفة - تسع 80 فرد).<br><br>• <b>العرض الأول:</b> 3499 ج (مكان + ساوند).<br>• <b>العرض الثاني:</b> 5500 ج (مكان + ساوند + ديكور وكوشة).<br>• <b>العرض الفضي:</b> 6900 ج (العرض الثاني + 70 كانز).<br>• <b>العرض الذهبي:</b> 7880 ج (العرض الثاني + 70 قطعة جاتوه وباتيه وشيكولاته).<br>• <b>عرض الـ VIP:</b> 9280 ج (العرض الثاني + 70 جاتوه + 70 كانز).<br><br>🎁 <b>عرض محدود:</b> فوتوسيشن مجاني في الحديقة.<br>💡 <b>رسوم سيرفس (في حال التقديم فقط):</b> 499 ج." 
+    <script>
+        function show(type) {
+            const panel = document.getElementById('panel');
+            const title = document.getElementById('title');
+            const content = document.getElementById('content');
+            panel.style.display = 'block';
+            if(type === 'birthday') {
+                title.innerText = "✨ عروض أعياد الميلاد والسبوع ✨";
+                content.innerHTML = "• أقل من 5 أفراد: 100 ج خدمة.<br>• من 5 لـ 10 أفراد: 200 ج خدمة.<br>• من 10 لـ 20 فرد: 350 ج خدمة.<br>• 20 فرد فأكثر: 50 ج للفرد + خصم 10% على المنيو.";
+            } else {
+                title.innerText = "💛 عروض الخطوبة وكتب الكتاب 💛";
+                content.innerHTML = "• العرض الأول: 3499 ج.<br>• العرض الثاني: 5500 ج.<br>• العرض الفضي: 6900 ج.<br>• العرض الذهبي: 7880 ج.<br>• عرض الـ VIP: 9280 ج.";
+            }
         }
-    };
-
-    function showDetails(key) {
-        document.getElementById('panelTitle').innerHTML = data[key].title;
-        document.getElementById('panelContent').innerHTML = data[key].content;
-        document.getElementById('detailsPanel').style.display = 'block';
-        document.getElementById('detailsPanel').scrollIntoView({ behavior: 'smooth' });
-    }
-</script>
+    </script>
 </body>
 </html>
