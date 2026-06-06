@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oro Cafe</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>ORO Cafe</title>
     <style>
-        body, html { margin: 0; padding: 0; font-family: sans-serif; background-color: #000; color: #fff; direction: rtl; text-align: center; }
+        body { margin: 0; padding: 0; font-family: sans-serif; background-color: #000; color: #fff; direction: rtl; text-align: center; }
         .main-wrapper { max-width: 500px; margin: 0 auto; min-height: 100vh; background-color: #000; padding-bottom: 40px; }
         .bg-container { position: relative; width: 100%; height: 100vh; background: url('welcome-bg.jpg.png') no-repeat center top; background-size: contain; }
         .btn { position: absolute; background: rgba(0,0,0,0); cursor: pointer; border: none; z-index: 10; }
@@ -14,33 +13,37 @@
         .wedding-btn { top: 21%; right: 5%; width: 42%; height: 21%; }
         .birthday-btn { top: 44%; left: 5%; width: 90%; height: 17%; }
         .details-panel { margin: 20px; padding: 25px; background: #1a1a1a; border: 2px solid #c5a059; border-radius: 15px; display: none; text-align: right; }
-        h2 { color: #c5a059; text-align: center; font-size: 20px; margin-bottom: 15px; }
-        p, li { color: #fff; font-size: 17px; line-height: 1.8; margin: 8px 0; }
+        h2 { color: #c5a059; text-align: center; font-size: 22px; margin-bottom: 20px; }
+        p { color: #fff; font-size: 18px; line-height: 1.8; margin: 10px 0; }
+        b { color: #c5a059; }
     </style>
 </head>
 <body>
 <div class="main-wrapper">
     <div class="bg-container">
-        <a href="https://oro-cafe.github.io/ORO-Caf-/" class="btn menu-btn"></a>
+        <a href="#" class="btn menu-btn"></a>
         <button class="btn wedding-btn" onclick="showDetails('wedding')"></button>
         <button class="btn birthday-btn" onclick="showDetails('birthday')"></button>
     </div>
+    
     <div id="detailsPanel" class="details-panel">
         <h2 id="panelTitle"></h2>
         <div id="panelContent"></div>
     </div>
 </div>
+
 <script>
     const data = {
         birthday: { 
-            title: "✨ أعياد الميلاد والسبوع ✨", 
-            content: "أهلاً بحضرتك يافندم 💛<br>متاح مكانين (الدور الثاني أو الحديقة الأمامية) 🔥<br>• العرض الأول (أقل من 5 أفراد): 100 ج خدمة + طلب من المنيو.<br>• العرض الثاني (من 5 إلى 10 أفراد): 200 ج خدمة + طلب من المنيو.<br>• العرض الثالث (من 10 لـ 20 فرد): 350 ج خدمة + طلب من المنيو.<br>• العرض الرابع (20 فرد فأكثر): 50 ج للفرد (لا يشترط طلب من المنيو) + خصم 10% على المنيو.<br>✔️ السعر شامل المكان والساوند سيستم.<br>✨ ديكور متاح (أو إحضار ديكور خاص)." 
+            title: "✨ عروض أعياد الميلاد والسبوع ✨", 
+            content: "متاح حجز (الدور الثاني) أو (الحديقة) 🔥<br><br>• <b>أقل من 5 أفراد:</b> 100 ج خدمة + طلب من المنيو.<br>• <b>من 5 إلى 10 أفراد:</b> 200 ج خدمة + طلب من المنيو.<br>• <b>من 10 إلى 20 فرد:</b> 350 ج خدمة + طلب من المنيو.<br>• <b>20 فرد فأكثر:</b> 50 ج للفرد (لا يشترط الطلب) + خصم 10% على المنيو.<br><br>✔️ السعر شامل المكان والساوند سيستم (لا يشمل الديكور).<br>✨ <b>اختياري:</b> متاح ديكور بأسعار تنافسية أو تنفيذ الديكور بنفسكم." 
         },
         wedding: { 
-            title: "⭐ عروض الخطوبة وكتب الكتاب ⭐", 
-            content: "القاعة مكيفة بالكامل (الدور الثاني) - تسع 80 فرد.<br>• العرض الأول: 3499 ج (مكان + ساوند).<br>• العرض الثاني: 5500 ج (مكان + ساوند + ديكور وكوشة).<br>• العرض الفضي: 6900 ج (العرض الثاني + 70 كانز).<br>• العرض الذهبي: 7880 ج (العرض الثاني + 70 جاتوه مشكل).<br>• عرض الـ VIP: 9280 ج (العرض الثاني + 70 جاتوه + 70 كانز).<br>🎁 عرض لفترة محدودة: فوتوسيشن مجاني في الحديقة.<br>💡 رسوم سيرفس (في حال التقديم فقط): 499 ج." 
+            title: "💛 عروض الخطوبة وكتب الكتاب 💛", 
+            content: "القاعة بالدور الثاني (مكيفة - تسع 80 فرد).<br><br>• <b>العرض الأول:</b> 3499 ج (مكان + ساوند).<br>• <b>العرض الثاني:</b> 5500 ج (مكان + ساوند + ديكور وكوشة).<br>• <b>العرض الفضي:</b> 6900 ج (العرض الثاني + 70 كانز).<br>• <b>العرض الذهبي:</b> 7880 ج (العرض الثاني + 70 قطعة جاتوه وباتيه وشيكولاته).<br>• <b>عرض الـ VIP:</b> 9280 ج (العرض الثاني + 70 جاتوه + 70 كانز).<br><br>🎁 <b>عرض محدود:</b> فوتوسيشن مجاني في الحديقة.<br>💡 <b>رسوم سيرفس (في حال التقديم فقط):</b> 499 ج." 
         }
     };
+
     function showDetails(key) {
         document.getElementById('panelTitle').innerHTML = data[key].title;
         document.getElementById('panelContent').innerHTML = data[key].content;
